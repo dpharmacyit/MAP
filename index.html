@@ -917,6 +917,268 @@
       text-align: center;
     }
 
+
+    /* ===== Mobile responsive fix ===== */
+    @media (max-width: 768px) {
+      html, body {
+        height: 100%;
+        overflow: hidden !important;
+      }
+
+      .app {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 72px 1fr !important;
+        width: 100vw !important;
+        height: 100vh !important;
+      }
+
+      .topbar {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        height: 72px !important;
+        padding: 8px 10px !important;
+        gap: 8px !important;
+        align-items: center !important;
+        position: relative !important;
+        z-index: 1200 !important;
+      }
+
+      .brand {
+        gap: 8px !important;
+        flex: 0 0 auto !important;
+        min-width: 72px !important;
+      }
+
+      .logo-img {
+        width: 68px !important;
+        height: 48px !important;
+        object-fit: contain !important;
+      }
+
+      .brand-title {
+        display: none !important;
+      }
+
+      .search-global {
+        min-width: 0 !important;
+        flex: 1 !important;
+        gap: 6px !important;
+      }
+
+      .search-global input {
+        height: 46px !important;
+        min-width: 0 !important;
+        padding: 0 12px !important;
+        font-size: 14px !important;
+        border-radius: 16px !important;
+      }
+
+      .about-btn {
+        display: none !important;
+      }
+
+      .map-wrap {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        width: 100vw !important;
+        height: calc(100vh - 72px) !important;
+        min-height: 0 !important;
+        position: relative !important;
+      }
+
+      #map {
+        width: 100vw !important;
+        height: calc(100vh - 72px) !important;
+      }
+
+      .sidebar {
+        position: absolute !important;
+        left: 10px !important;
+        right: 10px !important;
+        bottom: 10px !important;
+        width: auto !important;
+        height: auto !important;
+        max-height: 38vh !important;
+        min-height: 0 !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        z-index: 1000 !important;
+        padding: 0 !important;
+        border: 1px solid rgba(230,237,240,.95) !important;
+        border-radius: 22px !important;
+        background: rgba(255,255,255,.96) !important;
+        box-shadow: 0 18px 45px rgba(16,24,40,.22) !important;
+        overflow: hidden !important;
+        backdrop-filter: blur(14px) !important;
+      }
+
+      .summary-card {
+        display: none !important;
+      }
+
+      .panel {
+        margin: 0 !important;
+        border: 0 !important;
+        border-radius: 22px !important;
+        box-shadow: none !important;
+        max-height: 38vh !important;
+        overflow: hidden !important;
+      }
+
+      .panel-title {
+        padding: 13px 16px !important;
+        font-size: 15px !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 2 !important;
+        background: #fff !important;
+      }
+
+      #provinceGroups {
+        max-height: calc(38vh - 50px) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+
+      .province-head {
+        padding: 13px 14px !important;
+      }
+
+      .province-dot {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 11px !important;
+      }
+
+      .province-name {
+        font-size: 14px !important;
+      }
+
+      .province-count {
+        font-size: 12px !important;
+        padding: 4px 9px !important;
+      }
+
+      .branch-list {
+        padding: 0 8px 8px !important;
+      }
+
+      .branch-item {
+        grid-template-columns: 38px 1fr 28px !important;
+        gap: 8px !important;
+        padding: 10px 6px !important;
+      }
+
+      .branch-logo {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .branch-name {
+        font-size: 13px !important;
+      }
+
+      .branch-meta {
+        font-size: 11px !important;
+        line-height: 1.28 !important;
+      }
+
+      .phone-icon {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 12px !important;
+      }
+
+      .help-card,
+      .footer-contact {
+        display: none !important;
+      }
+
+      .mode-tabs {
+        top: 10px !important;
+        left: 62px !important;
+        padding: 4px !important;
+        border-radius: 18px !important;
+        z-index: 650 !important;
+      }
+
+      .mode-tab {
+        padding: 9px 14px !important;
+        font-size: 14px !important;
+      }
+
+      .legend {
+        display: none !important;
+      }
+
+      .leaflet-control-zoom {
+        margin-top: 10px !important;
+        margin-left: 10px !important;
+      }
+
+      .leaflet-control-layers {
+        margin-bottom: 48vh !important;
+      }
+
+      .leaflet-popup {
+        max-width: 292px !important;
+      }
+
+      .leaflet-popup-content-wrapper {
+        max-width: 292px !important;
+      }
+
+      .leaflet-popup-content {
+        width: 276px !important;
+        max-width: 276px !important;
+      }
+
+      .popup-card {
+        width: 276px !important;
+        max-width: 276px !important;
+        padding: 16px !important;
+      }
+
+      .popup-head {
+        grid-template-columns: 50px 1fr !important;
+        gap: 10px !important;
+      }
+
+      .popup-logo {
+        width: 46px !important;
+        height: 42px !important;
+      }
+
+      .popup-title {
+        max-width: 188px !important;
+        font-size: 17px !important;
+      }
+
+      .popup-row {
+        max-width: 244px !important;
+        grid-template-columns: 22px 1fr !important;
+        gap: 8px !important;
+        font-size: 12px !important;
+      }
+
+      .popup-text {
+        max-width: 214px !important;
+      }
+
+      .popup-actions {
+        max-width: 244px !important;
+        gap: 8px !important;
+      }
+
+      .popup-nav,
+      .share-btn {
+        height: 44px !important;
+        font-size: 12.5px !important;
+        border-radius: 13px !important;
+      }
+    }
+
 </style>
 </head>
 
