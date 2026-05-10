@@ -133,7 +133,18 @@
       font-size:15px;font-weight:800;
       border-bottom:1.5px solid var(--line);
       background:linear-gradient(90deg,#f0fbf5,#fff);
+      display:flex;align-items:center;justify-content:space-between;
     }
+    .collapse-btn{
+      display:none; /* hidden on desktop */
+      width:30px;height:30px;border-radius:50%;
+      border:1.5px solid var(--line);
+      background:#fff;color:var(--green-dark);
+      font-size:18px;line-height:1;cursor:pointer;
+      align-items:center;justify-content:center;
+      transition:.2s ease;flex:0 0 auto;
+    }
+    .collapse-btn:hover{background:var(--green);color:#fff;border-color:var(--green);}
 
     /* province groups */
     .province-group{border-bottom:1.5px solid var(--line);}
@@ -317,12 +328,14 @@
       width:100%;height:44px;padding:0 10px;
       border:0;border-radius:12px;
       background:linear-gradient(135deg,var(--green),var(--green-dark));
-      color:#fff;text-decoration:none;
+      color:#ffffff!important;text-decoration:none!important;
+      -webkit-text-fill-color:#ffffff;
       font-size:13px;font-weight:800;font-family:'Sarabun',sans-serif;
       cursor:pointer;
       box-shadow:0 8px 20px rgba(10,170,109,.22);
       transition:.15s ease;box-sizing:border-box;
     }
+    .popup-nav:link,.popup-nav:visited,.popup-nav:hover,.popup-nav:active{color:#ffffff!important;text-decoration:none!important;}
     .popup-nav:hover,.share-btn:hover{filter:brightness(1.08);}
     .share-btn{background:linear-gradient(135deg,#4b6ef5,#2d4dcf);}
 
@@ -387,7 +400,12 @@
         border-radius:20px!important;background:rgba(255,255,255,.97)!important;
         box-shadow:0 16px 44px rgba(10,40,25,.22)!important;
         overflow:hidden!important;backdrop-filter:blur(14px)!important;
+        transition:max-height .3s cubic-bezier(.4,0,.2,1)!important;
       }
+      .sidebar.collapsed{max-height:50px!important;}
+      .collapse-btn{display:flex!important;}
+      .sidebar.collapsed #provinceGroups{display:none!important;}
+      .sidebar.collapsed .panel{border-bottom:0!important;}
       .summary-card{display:none!important;}
       .panel{margin:0!important;border:0!important;border-radius:20px!important;box-shadow:none!important;max-height:38vh!important;overflow:hidden!important;}
       .panel-title{padding:11px 16px!important;font-size:14px!important;position:sticky!important;top:0!important;z-index:2!important;background:#fff!important;}
@@ -442,7 +460,12 @@
     </section>
 
     <section class="panel">
-      <div class="panel-title">🗺 เลือกดูตามจังหวัด</div>
+      <div class="panel-title">
+        <span>🗺 เลือกดูตามจังหวัด</span>
+        <button class="collapse-btn" id="collapseBtn" onclick="toggleSidebarCollapse()" title="ย่อ/ขยาย">
+          <span id="collapseIcon">⌄</span>
+        </button>
+      </div>
       <div id="provinceGroups"></div>
     </section>
 
@@ -736,6 +759,14 @@ document.getElementById('listTab').addEventListener('click',function(){
   document.getElementById('listTab').classList.add('active');
   document.getElementById('mapTab').classList.remove('active');
 });
+
+function toggleSidebarCollapse(){
+  var sidebar=document.querySelector('.sidebar');
+  var icon=document.getElementById('collapseIcon');
+  var collapsed=sidebar.classList.toggle('collapsed');
+  icon.textContent=collapsed?'⌃':'⌄';
+  if(!collapsed)setTimeout(function(){map.invalidateSize();},320);
+}
 
 renderGroups();
 renderLegend();
